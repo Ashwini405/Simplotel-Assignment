@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .head {
     background: #f87474;
     display: flex;
@@ -23,34 +27,36 @@
 }
 
 .menu img {
-    height: 45px; 
+    height: 45px;
     width: 50px;
-    font-size: 30px;
 }
 
 .box {
     font-family: Arial, Helvetica, sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
     background: linear-gradient(110deg,#fff4b8 10%,#ffd6d6 50%,#fb99d4 80%);
 }
 
 .top {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
 }
 
 .left {
     padding: 85px;
+    flex: 1;
+}
+
+.right {
+    flex: 1;
 }
 
 .right img {
-    width: 750px;
-    height: 750px;
+    width: 100%;
+    max-width: 750px;
+    height: 100%;
+    max-height: 750px;
     object-fit: cover;
+    display: block;
 }
 
 .top h1 {
@@ -67,10 +73,9 @@
 
 .btn {
     margin-top: 40px;
-    align-items: center;
     width: 250px;
     height: 50px;
-    border: 1px solid #f87474;
+    border: none;
     background: #f87474;
     color: white;
 }
@@ -82,16 +87,15 @@
 .bottom {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 100px;
-    padding: 150px 0px;
+    padding: 150px 0;
 }
 
 .pics {
-    width: 520px; 
+    width: 520px;
     display: grid;
-    grid-template-columns: 280px 280px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 200px;
     gap: 20px;
 }
@@ -108,27 +112,19 @@
 
 .text {
     width: 480px;
-    padding: 24px 24px;
+    padding: 24px;
     background: #f87474;
-    text-align: left;
 }
 
 .text span {
-    display: inline-block;
-    width: 100%;
-    text-align: left;
     font-size: 14px;
     letter-spacing: 2px;
-    margin: 0 0 16px 0;
 }
 
 .text h1 {
     font-size: 40px;
-    font-weight: 770;
-    line-height: 1.3;
     letter-spacing: 10px;
-    margin: 0 0 28px 0;
-    text-align: left;
+    margin: 20px 0;
 }
 
 .text p {
@@ -140,47 +136,31 @@
 
 .text img {
     width: 22px;
-    height: auto;
 }
-@media (max-width: 768px) {                      
-    .head {
-        width: 100%;
-        padding: 15px;
-        position: static;
-    }
+
+/* Mobile*/
+@media (max-width: 768px) {
+
     .nav {
         width: 100%;
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
         font-size: 16px;
         letter-spacing: 1px;
     }
+
     .nav h5 {
         width: 100%;
         padding: 10px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-        display: block;
+        border-bottom: 1px solid rgba(0,0,0,0.3);
     }
 
     .menu {
-        display: block;
         align-self: flex-end;
-        margin-top: 10px;
-    }
-
-    .menu img {
-        width: 35px;
-        height: 35px;
     }
 
     .top {
-        display: flex;
         flex-direction: column;
-    }
-
-    .right {
-        order: 1;
     }
 
     .right img {
@@ -194,27 +174,17 @@
     }
 
     .bottom {
-        display: flex;
         flex-direction: column;
         padding: 60px;
         gap: 30px;
     }
 
     .pics {
-        order: 1;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 160px;
-        gap: 15px;
-    }
-
-    .pics img:nth-child(2) {
-        grid-row: span 2;
     }
 
     .text {
-        order: 2;
         width: 90%;
         text-align: center;
     }
@@ -225,81 +195,39 @@
     }
 }
 
-@media (max-width: 320px) {                           
-
+/* smart phone */
+@media (max-width: 320px) {
     .pics {
         grid-auto-rows: 110px;
-        gap: 10px;
     }
-
-    .text {
-        width: 100%;
-        margin: 30px;
-    }
-
     .text h1 {
         font-size: 20px;
         letter-spacing: 4px;
     }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
 
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
     .nav {
         width: 85%;
         font-size: 20px;
         letter-spacing: 2px;
     }
-
-    .nav h5 {
-        margin: 0 14px;
-    }
-
-    .top {
-        flex-direction: row;
-    }
-
-    .left {
-        width: 50%;
-        padding: 60px;
-    }
-
-    .right {
-        width: 50%;
-    }
-
-    .right img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
     .top h1 {
         font-size: 42px;
-        padding: 40px 0;
     }
-
     .top p {
         font-size: 18px;
     }
-
     .bottom {
         gap: 60px;
         padding: 80px 40px;
     }
-
     .pics {
         width: 50%;
         grid-auto-rows: 180px;
     }
-
     .text {
         width: 45%;
-        padding: 30px;
-    }
-
-    .text h1 {
-        font-size: 34px;
-        letter-spacing: 4px;
     }
 }
